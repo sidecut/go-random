@@ -4,7 +4,7 @@ import (
 	crypto_rand "crypto/rand"
 	"encoding/binary"
 	"fmt"
-	math_rand "math/rand"
+	"math/rand"
 )
 
 func init() {
@@ -13,11 +13,11 @@ func init() {
 	if err != nil {
 		panic("cannot seed math/rand package with cryptographically secure random number generator")
 	}
-	math_rand.Seed(int64(binary.LittleEndian.Uint64(b[:])))
+	rand.Seed(int64(binary.LittleEndian.Uint64(b[:])))
 }
 
 func main() {
 	for i := 0; i < 3; i++ {
-		fmt.Printf("%v\n", math_rand.Int63())
+		fmt.Printf("%v\n", rand.Int63())
 	}
 }
